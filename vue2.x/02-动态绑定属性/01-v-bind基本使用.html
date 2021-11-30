@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+            <h2>{{message}}</h2>
+        <img v-bind:src="imgUrl" alt="">
+        <a v-bind:href="linkUrl">百度一下</a>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                message:'hello',
+                imgUrl:'https://tse1-mm.cn.bing.net/th?id=OIP.ZTmNathhKflijArYDaQEDAHaEo&w=153&h=100&c=8&rs=1&qlt=90&dpr=1.5&pid=3.1&rm=2',
+                linkUrl:'http://www.baidu.com'
+            }
+        })
+    </script>
+</body>
+</html>

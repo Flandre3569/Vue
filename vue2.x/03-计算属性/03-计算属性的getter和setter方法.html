@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <h2>{{fullName}}</h2>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                firstName:'kobe',
+                lastName:'bryant'
+            },
+            computed:{
+                //这时简写的手段，正常情况下使用getter和setter方法。
+                // fullName:function (){
+                //     return this.firstName+' '+this.lastName;
+                // }
+
+                //这是正常情况下最全的对于计算属性的写法，但是一般情况下
+                //没有set方法，也就是设置只读属性。
+                //所以也就演变出了上面的那种简写。
+                fullName:{
+                    set:function (newValue){
+                        const name=newValue.split(' ');
+                        this.firstName=name[0];
+                        this.lastName=name[1];
+                    },
+                    get:function (){
+                        return this.firstName+' '+this.lastName;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

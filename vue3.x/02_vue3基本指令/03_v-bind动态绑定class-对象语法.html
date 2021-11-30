@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .Active {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <template id="my-app">
+    <h2 :class="{'Active':isActive}">{{message}}</h2>
+    <button @click="toggle">切换</button>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const App = {
+      template: "#my-app",
+      data() {
+        return {
+          message: "hello world",
+          isActive: true,
+        }
+      },
+      methods: {
+        toggle() {
+          this.isActive = !this.isActive;
+        }
+      }
+    };
+    Vue.createApp(App).mount("#app");
+  </script>
+</body>
+</html>

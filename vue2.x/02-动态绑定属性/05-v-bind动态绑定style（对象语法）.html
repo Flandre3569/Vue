@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+<!--        调用methods里面的方法来实现动态绑定style-->
+<!--        <h2 :style="changeStyle()">{{message}}</h2>-->
+
+<!--        把fontSize1当作一个变量去使用-->
+<!--        <h2 :style="{fontSize:fontSize1}">{{message}}</h2>-->
+
+<!--        当data中的数据没有加单位时的写法-->
+        <h2 :style="{fontSize:finalSize+'px',color:finalColor}">{{message}}</h2>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                message:'hello',
+                fontSize1:'100px',
+                finalSize:100,
+                finalColor:'red'
+            },
+            methods:{
+                changeStyle:function (){
+                    //50px必须加上单引号，不然就会当作一个变量去解析
+                    return {fontSize:'50px'}
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+      <h2>{{message}}</h2>
+<!--    事件调用的方法没有参数-->
+    <button @click="btn1Click">按钮1</button>
+    <button @click="btn1Click()">按钮2</button>
+
+<!--    在事件定义时，写函数时省略了小括号，但是方法本身是需要一个参数的-->
+<!--    如果函数没有传入，那么函数的形参为mouseEvent,也就是默认将浏览器产生的event事件作为参数传递到函数中-->
+    <button @click="btn2Click(2)">按钮3</button>
+<!--     在调用方式，如何手动的获取浏览器参数的event对象：$event-->
+<!--    如果要使用英文的时候，没有加引号，则会被自动识别成变量，去data里面找-->
+    <button @Click="btn3Click(123,$event)">按钮4</button>
+    </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'hello',
+
+        },
+        methods:{
+            btn1Click(){
+                console.log('点击了');
+            },
+            btn2Click(a){
+                console.log('点击了'+a);
+            },
+            btn3Click(abc,event){
+                console.log(abc,event);
+            }
+        }
+    })
+  </script>
+</body>
+</html>

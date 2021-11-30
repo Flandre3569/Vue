@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <template id="my-app">
+    <h2>{{ info.name }}</h2>
+    <button @click="change()">点击修改Info</button>
+    <button @click="changeName()">点击修改info.name</button>
+    <button @click="changeLikeName()">点击修改info.likeName.name</button>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+    const App= {
+      template: "#my-app",
+      data() {
+        return {
+          info: {
+            name: "张三",
+            age: 18,
+            habits: "篮球",
+            likeName: {name: "王五"}
+          }
+        }
+      },
+      // 对data中的对象进行监听（侦听）
+      watch: {
+        // 用对象的方式进行侦听，方便添加属性
+        info: {
+          handler: function(newValue,oldValue) {
+            console.log("newValue:",newValue,"oldValue:",oldValue)
+          },
+          // 深度监听
+          deep: true,
+          // 立即侦听
+          // immediate: true,
+        }
+      },
+      // 分层次对data中的数据进行修改
+      methods: {
+        change() {
+          this.info = {name:"李四"};
+        },
+        changeName() {
+          this.info.name = "李四";
+        },
+        changeLikeName() {
+          this.info.likeName.name = "李四";
+        }
+      }
+    }
+
+    Vue.createApp(App).mount("#app");
+  </script>
+
+</body>
+</html>

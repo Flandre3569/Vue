@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{message}}</h2>
+  <cpn></cpn>
+</div>
+
+
+<template id="cpn">
+  <div>
+    <h2>{{title}}</h2>
+    <p>hello,我是内容</p>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+<!--  组件中存放自己的数据-->
+  Vue.component('cpn',{
+    template:'#cpn',
+    data(){
+      return {
+        title:'我是标题,title',
+      }
+    }
+  })
+
+  const app=new Vue({
+    el:'#app',
+    data:{
+      message:'hello',
+    }
+  })
+</script>
+</body>
+</html>

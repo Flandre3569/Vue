@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <template id="my-app">
+        <!-- 获取数组中的内容 -->
+        <h2>数组内容</h2>
+        <ul>
+            <li v-for="(movie, index) in movies">{{ movie }}--{{ index }}</li>
+        </ul>
+
+        <h2>对象内容</h2>
+        <ul>
+            <li v-for="(value, key, index) in obj">{{ value }}--{{ key }}--{{ index }}</li>
+        </ul>
+    </template>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const App= {
+            template: "#my-app",
+            data() {
+                return {
+                    movies: [
+                        "大话西游",
+                        "钢铁侠",
+                        "洛基",
+                        "复仇者联盟"
+                    ],
+                    obj: {
+                        name: "MxXuan",
+                        age: 21,
+                        height: 187
+                    }
+                }
+            }
+        }
+
+        Vue.createApp(App).mount("#app")
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+   <script>
+       //if中没有作用域产生的错误
+       var func;
+           if (true) {
+               var name = 'fan';
+               function func() {
+                   console.log(name);
+               }
+       }
+       name='ming';
+       func();
+
+
+       // // for循环中没有块级作用域产生的错误
+       // // 因为for循环的正常进行，所以前一个点击的时候会被循环结束的结果覆盖掉，最后的结果将全是点击了第五个按钮
+       // var btns=document.getElementsByTagName("button");
+       //  for(var i=0;i<btns.length;i++){
+       //      btns[i].addEventListener('click',function (){
+       //          console.log("点击了第"+i+"个按钮")
+       //      })
+       //  }
+
+        //es5的修改方法。用闭包函数解决
+       var btns=document.getElementsByTagName("button");
+       for(var i=0;i<btns.length;i++){
+           (function (i) {
+               btns[i].addEventListener('click', function () {
+                   console.log("点击了第" + (i+1) + "个按钮");
+               })
+           })(i)
+       }
+
+
+       // //而es6的生成了拥有会计作用域的let用来代替var，因此便不用闭包便可完成该操作
+       // let btns=document.getElementsByTagName("button");
+       //   for(let i=0;i<btns.length;i++){
+       //       btns[i].addEventListener('click',function (){
+       //           console.log("点击了第"+(i+1)+"个按钮")
+       //       })
+       //   }
+   </script>
+</body>
+</html>

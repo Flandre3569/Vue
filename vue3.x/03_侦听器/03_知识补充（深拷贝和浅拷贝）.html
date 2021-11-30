@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const obj= {
+      name: "张三",
+      sex: "男",
+      girlFriend: {
+        name: "小红",
+        sex: "女"
+      }
+    }
+    // 浅拷贝
+    // const newObj=Object.assign({},obj);
+    // obj.girlFriend.name= "小丽";
+    // console.log(obj);
+    // console.log(newObj);
+    
+    // 深拷贝
+    const newObj=JSON.parse(JSON.stringify(obj));
+    obj.girlFriend.name= "小兰";
+    console.log(obj);
+    console.log(newObj);
+  </script>
+</body>
+</html>

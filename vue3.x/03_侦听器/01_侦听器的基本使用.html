@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <template id="my-app">
+    输入你的问题
+    <input type="text" v-model="question">
+    <button @click="queryAnswer()">查询答案</button>
+  </template>
+  
+  <script src="../js/vue.js"></script>
+  <script>
+    const App= {
+      template: "#my-app",
+      data() {
+        return {
+          question:"",
+          answer:""
+        }
+      },
+      // 利用监听，每次输入的时候都会进行更新，并调用方法
+      watch: {
+        question(newValue,oldValue) {
+          console.log("新值:"+newValue+"  "+"旧值:"+oldValue);
+          this.queryAnswer();
+        }
+      },
+      // 结合click，点击的时候触发方法
+      methods: {
+        queryAnswer() {
+          console.log(`问题${this.question}的答案是哈哈哈哈`);
+          this.answer="";
+        }
+      }
+    }
+
+    Vue.createApp(App).mount("#app");
+
+  </script>
+</body>
+</html>

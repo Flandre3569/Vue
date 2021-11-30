@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--  v-model绑定一个数据之后，也可以形成互斥效果，也就是不用再添加name属性，model绑定的是value值-->
+<div id="app">
+  <label for="male">
+    <input type="radio" id="male" name="sex" value="男" v-model="sex">男
+  </label>
+
+  <label for="female">
+    <input type="radio" id="female" name="sex" value="女" v-model="sex">女
+  </label>
+
+  <h2>{{sex}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app=new Vue({
+    el:'#app',
+    data:{
+      message:'hello',
+      sex:'男'
+    }
+  })
+</script>
+</body>
+</html>

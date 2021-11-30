@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-cloak>
+            <h2>{{message}}</h2>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        //在vue解析之前，在vue中有一个属性v-cloak
+        //在vue解析之后，在div中没有一个属性v-cloak
+        setInterval(function (){
+            var app=new Vue({
+                el:'#app',
+                data:{
+                    message:'hello'
+                }
+            })
+        },2000)
+    </script>
+</body>
+</html>

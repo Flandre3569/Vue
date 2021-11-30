@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <template id="my-app">
+        <h2>{{ getFullName() }}</h2>
+        <h1>{{ fullName }}</h1>
+    </template>
+
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const App= {
+            template: "#my-app",
+            data() {
+                return {
+                    firstName:"明轩",
+                    lastName:"范",
+                }
+            },
+            // 用methods写方法的方式的到完整的名字
+            methods: {
+                getFullName() {
+                    return this.lastName+" "+this.firstName;
+                }
+            },
+            // 用计算属性的方式的得到完整的名字
+            computed: {
+                fullName: {
+                    get() {
+                        return this.lastName+" "+this.firstName;
+                    },
+                    set(value) {
+                        const name=value.split(" ");
+                        this.lastName=name[0];
+                        this.firstName=name[1];
+                    }
+                }
+            }
+        }
+    Vue.createApp(App).mount("#app")
+    </script>
+</body>
+</html>

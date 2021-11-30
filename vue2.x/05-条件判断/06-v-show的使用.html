@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+<!--    两种方式-->
+<!--    当用v-if的值为false的时候，dom中根本不会出现那个元素-->
+<!--    而当用v-show的时候，只是给我们的元素增添了一个行内样式：display='none'-->
+      <h2 v-if="isShow">{{message}}</h2>
+    <h2 v-show="isShow">{{message}}</h2>
+    </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            message:'hello',
+          isShow:true,
+        }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  <template id="my-app">
+    <img :src="imgUrl" alt="">
+    <a :href="aHref">百度一下</a>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const App = {
+      template: "#my-app",
+      data() {
+        return {
+          message: "hello world",
+          imgUrl: "http://mingxuan3569.oss-cn-beijing.aliyuncs.com/image/littlelady.png",
+          aHref: "https://www.baidu.com"
+        }
+      }
+    };
+    Vue.createApp(App).mount("#app");
+  </script>
+</body>
+</html>

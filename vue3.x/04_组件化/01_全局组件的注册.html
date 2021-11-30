@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+  
+  <template id="my-app">
+    <component-a></component-a><br>
+    <hr>
+    <component-b></component-b>
+  </template>
+  <template id="component-a">
+    <h2>{{title}}</h2>
+    <p>{{desc}}</p>
+    <button @click="change()">改变标题内容</button>
+  </template>
+  <template id="component-b">
+    <input type="text" v-model.lazy="message">
+    <h2>{{message}}</h2>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    // 设置根组件
+    const App= {
+      template: "#my-app",
+    }
+    // 创建vue实例
+    const app = Vue.createApp(App);
+    // 创建组件实例
+    app.component("component-a",{
+      template: "#component-a",
+      data() {
+        return {
+          title: "我是标题",
+          desc: "我是内容",
+        }
+      },
+      methods: {
+        change() {
+          this.title= "我是改变之后的标题";
+        }
+      }
+    }),
+
+    app.component("component-b",{
+      template:"#component-b",
+      data() {
+        return {
+          message: "hello world",
+        }
+      }
+    })
+    // 挂载到div中
+    app.mount("#app");
+  </script>
+</body>
+</html>

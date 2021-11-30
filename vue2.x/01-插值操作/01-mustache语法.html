@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box">
+        {{message}}
+        <h2>{{message}},范明轩</h2>
+        <h2>{{firstName+' '+lastName}}</h2>
+        <h2>{{counter * 2}}</h2>
+    </div>
+
+<script src="../js/vue.js"></script>
+<script>
+    const app=new Vue({
+        el:'#box',
+        data:{
+            message:"hello world！",
+            firstName:"kobe",
+            lastName:"bryant",
+            counter:100
+        }
+    })
+</script>
+</body>
+</html>

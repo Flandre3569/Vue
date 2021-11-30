@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active {
+      color: blue;
+    }
+    .underscore {
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <template id="my-app">
+    <!-- 数组中可以写对象，而且还可以写多个数组元素 -->
+    <h2 :class="[{active: isActive}, {underscore: isActive}]">{{message}}</h2>
+    <button @click="toggle">切换</button>
+  </template>
+
+  <script src="../js/vue.js"></script>
+  <script>
+
+    const App = {
+      template: "#my-app",
+      data() {
+        return {
+          message: "hello world",
+          isActive: true,
+        }
+      },
+      methods: {
+        toggle() {
+          this.isActive=!this.isActive;
+        }
+      }
+    };
+    Vue.createApp(App).mount("#app");
+  </script>
+</body>
+</html>

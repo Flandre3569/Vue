@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li @click="activeIndex=index" :class="{'active':activeIndex==index}" v-for="(item,index) in movies">{{item}}</li>
+        </ul>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                movies:['钢铁侠','X战警','复仇者联盟','火影忍者'],
+                activeIndex:0
+            },
+        })
+    </script>
+</body>
+</html>

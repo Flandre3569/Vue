@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in letter" :key="item">{{item}}</li>
+    </ul>
+    </div>
+  <script src="../js/vue.js"></script>
+  <script>
+    const app=new Vue({
+        el:'#app',
+        data:{
+            letter:['a','b','c','d','e'],
+        }
+    })
+  </script>
+</body>
+</html>

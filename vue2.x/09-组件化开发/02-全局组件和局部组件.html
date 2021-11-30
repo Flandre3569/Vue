@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn></cpn>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const cpnC=Vue.extend({
+    template:`<div>
+                <h2>我是标题</h2>
+                <p>我是内容</p>
+                <p>我是内容</p>
+                <p>我是内容</p>
+              </div>`
+  })
+  //全局组件
+  // Vue.component('mycpn',cpnC);
+
+  const app=new Vue({
+    el:'#app',
+    data:{
+      message:'hello',
+    },
+    //局部组件
+    components:{
+      cpn:cpnC,
+    }
+  })
+</script>
+</body>
+</html>
