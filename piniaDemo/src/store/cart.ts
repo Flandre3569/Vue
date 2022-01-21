@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { IProducts } from "@/api/shop";
+import { IProducts, buyProducts } from "@/api/shop";
 import { useProductsStore } from "@/store/products";
 
 // 将ICart里的属性和IProducts进行合并，并且过滤掉IProducts中的inventory属性
@@ -11,9 +11,18 @@ export const useCartStore = defineStore("cart", {
   state() {
     return {
       cartProducts: [] as ICart[],
+      isSettle: 2,
     };
   },
-  getters: {},
+  getters: {
+    totalPrice() {
+      let price = 0;
+      for (const item of this.cartProducts) {
+        price = price + item.price * item.quantity;
+      }
+      return price;
+    },
+  },
   actions: {
     addProduct(product: IProducts) {
       console.log(product);
@@ -39,6 +48,15 @@ export const useCartStore = defineStore("cart", {
       // 更新商品信息
       const productsStore = useProductsStore();
       productsStore.decrementProducts(product);
+    },
+
+    async settle() {
+      const res = await buyProducts();
+      if (res) {
+        this.isSettle = 1;
+      } else {
+        this.isSettle = 0;
+      }
     },
   },
 });
