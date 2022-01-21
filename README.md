@@ -1,2 +1,5 @@
 # Vue
-vue2+vue3+vue-router+vuex学习历程
+vue学习历程
+
+## 现在的vue/core + router + pinia + volar + typescript简直好用到爆
+
